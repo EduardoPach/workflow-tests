@@ -13,9 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        event_type: ${{ inputs.event_type
-          && fromJSON(format('["{0}"]', replace(replace(inputs.event_type, ' ', ''), ',', '","')))
-          || fromJSON('["argmax-sdk-swift-diarization","argmax-sdk-swift-realtime-asr","argmax-sdk-swift-prerecorded-asr"]') }}
+        event_type: ${{ fromJSON(format('[{0}]', inputs.event_type || '"argmax-sdk-swift-diarization","argmax-sdk-swift-realtime-asr","argmax-sdk-swift-prerecorded-asr"')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo event type
