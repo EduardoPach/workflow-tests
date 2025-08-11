@@ -5,7 +5,6 @@ on:
   workflow_dispatch:
     inputs:
       event_type:
-        description: The event type to trigger OpenBench-internal evaluation. Available options are: argmax-sdk-swift-release, argmax-sdk-swift-diarization, argmax-sdk-swift-realtime-asr, argmax-sdk-swift-prerecorded-asr. If passing multiple event types separate them with commas.
         required: false
         default: argmax-sdk-swift-diarization,argmax-sdk-swift-realtime-asr,argmax-sdk-swift-prerecorded-asr
 
