@@ -6,7 +6,8 @@ on:
     inputs:
       event_type:
         required: false
-        description: 'A comma-separated list of event types to test. Each element must be enclosed in double quotes. Example: "<event_type1>","<event_type2>"'
+        description: >
+          A comma-separated list of event types to test. Each element must be enclosed in double quotes. Example: "<event_type1>","<event_type2>"
         default: '"argmax-sdk-swift-diarization","argmax-sdk-swift-realtime-asr","argmax-sdk-swift-prerecorded-asr"'
 
 jobs:
