@@ -9,12 +9,11 @@ on:
         default: argmax-sdk-swift-diarization,argmax-sdk-swift-realtime-asr,argmax-sdk-swift-prerecorded-asr
 
 jobs:
-  strategy:
-    fail-fast: false
-    matrix:
-      event_type: ${{ fromJSON(format('[{0}]', inputs.event_type)) }}
-
   echo-event-type:
+    strategy:
+      fail-fast: false
+      matrix:
+        event_type: ${{ fromJSON(format('[{0}]', inputs.event_type)) }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo event type
