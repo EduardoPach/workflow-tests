@@ -6,14 +6,15 @@ on:
     inputs:
       event_type:
         required: false
-        default: argmax-sdk-swift-diarization,argmax-sdk-swift-realtime-asr,argmax-sdk-swift-prerecorded-asr
+        description: 'A comma-separated list of event types to test. Each element must be enclosed in double quotes. Example: "<event_type1>","<event_type2>"'
+        default: '"argmax-sdk-swift-diarization","argmax-sdk-swift-realtime-asr","argmax-sdk-swift-prerecorded-asr"'
 
 jobs:
   echo-event-type:
     strategy:
       fail-fast: false
       matrix:
-        event_type: ${{ fromJSON(format('[{0}]', inputs.event_type || 'argmax-sdk-swift-diarization,argmax-sdk-swift-realtime-asr,argmax-sdk-swift-prerecorded-asr')) }}
+        event_type: ${{ fromJSON(format('[{0}]', inputs.event_type )) }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo event type
