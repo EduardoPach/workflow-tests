@@ -10,6 +10,7 @@ on:
 
 jobs:
   strategy:
+    fail-fast: false
     matrix:
       event_type: ${{ fromJSON(format('[{0}]', inputs.event_type)) }}
 
