@@ -1,0 +1,21 @@
+name: Test Matrix Input Dependencies
+run-name: test-matrix-inputs-${{ github.sha }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      event_type:
+        description: The event type to trigger OpenBench-internal evaluation. Available options are: argmax-sdk-swift-release, argmax-sdk-swift-diarization, argmax-sdk-swift-realtime-asr, argmax-sdk-swift-prerecorded-asr. If passing multiple event types separate them with commas.
+        required: false
+
+jobs:
+  strategy:
+    matrix:
+      event_type: ${{ fromJSON(format('[{0}]', inputs.event_type || '"argmax-sdk-swift-diarization","argmax-sdk-swift-realtime-asr","argmax-sdk-swift-prerecorded-asr"')) }}
+
+  echo-event-type:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo event type
+        run: |
+          echo "Event type: ${{ matrix.event_type }}"
